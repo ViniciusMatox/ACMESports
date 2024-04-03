@@ -3,6 +3,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.PrintStream;
 import java.nio.charset.Charset;
+import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -79,14 +80,77 @@ public class ACMESports {
         }
     }
     private void atletaNaMedalha(){
-        int numeroAtleta = entrada.nextInt();
-        entrada.nextLine();
         int codigoMedalha = entrada.nextInt();
         entrada.nextLine();
-       Atleta a = plantel.consultaAtleta(numeroAtleta);
-       Medalha m = medalheiro.consultaMedalha(codigoMedalha);
-       m
-        
+        while (codigoMedalha != -1) {
+            int numeroAtleta = entrada.nextInt();
+            entrada.nextLine();
+                Atleta a = plantel.consultaAtleta(numeroAtleta);
+                Medalha m = medalheiro.consultaMedalha(codigoMedalha);
+                a.adicionaMedalha(m);
+                m.adicionaAtleta(a);    
+                System.out.println("3: " + codigoMedalha + numeroAtleta);
+        }
+    }
+    private void dadosAtletaNum(){
+        Atleta atleta;
+        int numeroAtleta = entrada.nextInt();
+        entrada.nextLine();
+        atleta = plantel.consultaAtleta(numeroAtleta);
+        if(atleta!=null){
+            System.out.println("4" + atleta.toString());
+        } else System.out.println("4: Atleta não encontrado");
+    }
+    private void dadosAtletaNome(){
+        Atleta atleta;
+        String nomeAtleta = entrada.nextLine();
+        atleta = plantel.consultaAtleta(nomeAtleta);
+        if (atleta!=null) {
+            System.out.println("5: " + atleta.toString());
+        } else System.out.println("5: Atleta não encontrado");
     }
 
+    private void mostraDadosMedalha(){
+        int codigoMedalha = entrada.nextInt();
+        entrada.nextInt();
+        Medalha medalha = medalheiro.consultaMedalha(codigoMedalha);
+        entrada.nextLine();
+        if (medalha!=null ) {
+            System.out.println("6: " + medalha.getCodigo() + medalha.getTipo() + medalha.isIndividual() + medalha.getModalidade());
+        }
+    }
+
+    private void mostraDadosAtletaPais(){
+        ArrayList<Atleta>paises = new ArrayList<>();
+        String pais = entrada.nextLine();
+       for (Atleta atleta : plantel.getAtletas()){
+            if (atleta.getPais().equals(pais)) {
+                paises.add(atleta);
+            }
+            System.out.println("7: " + atleta.getNumero() + atleta.getNome() + atleta.getPais());
+       }
+    }
+
+    private void mostraDadosAtletaMedalhas(){
+        ArrayList<Atleta>medalhas = new ArrayList<>();
+        int tipoMedalha = entrada.nextInt();
+        entrada.nextLine();
+        for (Atleta atleta : plantel.getAtletas()){
+           for (Medalha medalha : atleta.getMedalhas()) {
+                if (atleta.getMedalhas().equals(medalhas)) {
+                    medalhas.add(atleta);
+                }
+           }
+            System.out.println("8: " + atleta.getNumero() + atleta.getNome() + atleta.getPais());
+        }
+    }
+    private void mostraDadosAtletaModalidade(){
+        ArrayList<Medalha>modalidades = new ArrayList<>();
+        String modalidade = entrada.nextLine();
+        for (Atleta atleta : plantel.getAtletas()){
+            if (atleta.getPais().equals(modalidade)) {
+                modalidades.add(null)
+            }
+            System.out.println("9: " + atleta.get + atleta.getNome() + atleta.getPais());   
+    }
 }

@@ -20,6 +20,9 @@ public class Atleta {
     public int getNumero() {
         return numero;
     }
+    public ArrayList<Medalha>getMedalhas(){
+        return this.listaMedalhas;
+    }
 
     public void setNumero(int numero) {
         this.numero = numero;
