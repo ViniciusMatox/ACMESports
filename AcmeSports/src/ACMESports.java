@@ -45,13 +45,11 @@ public class ACMESports {
         registrarAtleta();
 		registrarMedalhas();
 		atletaNaMedalha();
-		informacoesAtletas(numero);
-		informacoesAtletas(nome);
-		informacoesMedalhas();
-		mostrarPaisDosAtletas();
-		mostraAtletasMedalhasInfo();
-		mostrarAtlteasDeModalidade();
-		mostrarAtletacomMaisMedalhas();
+		dadosAtletaNum();
+        dadosAtletaNome();
+        mostraDadosMedalha();
+        mostraDadosAtletaPais();
+        mostraDadosAtletaMedalhas();
 
     }
     private void registrarAtleta(){
@@ -144,13 +142,5 @@ public class ACMESports {
             System.out.println("8: " + atleta.getNumero() + atleta.getNome() + atleta.getPais());
         }
     }
-    private void mostraDadosAtletaModalidade(){
-        ArrayList<Medalha>modalidades = new ArrayList<>();
-        String modalidade = entrada.nextLine();
-        for (Atleta atleta : plantel.getAtletas()){
-            if (atleta.getPais().equals(modalidade)) {
-                modalidades.add(null)
-            }
-            System.out.println("9: " + atleta.get + atleta.getNome() + atleta.getPais());   
-    }
+    
 }
