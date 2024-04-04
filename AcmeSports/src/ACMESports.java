@@ -10,8 +10,8 @@ import java.util.Scanner;
 
 public class ACMESports {
 
-    private Scanner entrada = null;                 // Atributo para entrada de dados
-    private PrintStream saidaPadrao = System.out;   // Guarda a saida padrao - tela (console)
+    private Scanner entrada = null;                
+    private PrintStream saidaPadrao = System.out;
 	private Medalheiro medalheiro;
 	private Plantel plantel;
 	private int numero;
@@ -39,9 +39,6 @@ public class ACMESports {
         entrada = new Scanner(System.in);
     }
     public void Executar(){
-
-    }
-    private void cadastraAtleta(){
         registrarAtleta();
 		registrarMedalhas();
 		atletaNaMedalha();
@@ -50,7 +47,7 @@ public class ACMESports {
         mostraDadosMedalha();
         mostraDadosAtletaPais();
         mostraDadosAtletaMedalhas();
-
+        mostraDadosAtletaModalidade();
     }
     private void registrarAtleta(){
         int numero = entrada.nextInt();
@@ -141,6 +138,19 @@ public class ACMESports {
            }
             System.out.println("8: " + atleta.getNumero() + atleta.getNome() + atleta.getPais());
         }
+    }
+    private void mostraDadosAtletaModalidade(){
+        ArrayList<Medalha>listaModalidade = new ArrayList()<>;
+        String modalidade = entrada.nextLine();
+        for(Atleta atleta : plantel.getAtletas()){
+            for(Medalha medalha : plantel.getMedalhas()){
+                if(atleta.getModalidade().equals(listaModalidade)){
+                    listaModalidade.add(atleta)
+                }
+            }
+            System.out.println("9: " medalha.getModalidade() + medalha.getTipo() + medalha.getNumero() + medalha.getNome() + medalha.getPais());
+        }
+
     }
     
 }
